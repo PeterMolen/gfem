@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React, { useState, useEffect } from "react";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Menu from "./components/Menu";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import TimeReports from "./pages/TimeReports";
+import Overview from "./pages/Overview";
+import Footer from "./components/Footer"
+import NotionDataReader from './components/NotionDataReader';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="site-container">
+        <header className="site-header">
+          <Menu />
+        </header>
+        <main className="site-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/timereports" element={<TimeReports />} />
+            <Route path="/overview" element={<Overview />} />
+          </Routes>
+        </main>
+        <footer className="site-footer">
+          <Footer />
+        </footer>
+      </div>
+    </Router>
   );
 }
 
