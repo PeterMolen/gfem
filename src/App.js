@@ -8,7 +8,7 @@ import Projects from "./pages/Projects";
 import TimeReports from "./pages/TimeReports";
 import Overview from "./pages/Overview";
 import Footer from "./components/Footer"
-import NotionDataReader from './components/NotionDataReader';
+
 
 function App() {
   return (
