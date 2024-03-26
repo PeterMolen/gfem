@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import NotionLogin from "../components/NotionLogin";
-//import NotionLogin2 from "../components/NotionLogin2";
+import NotionLogin from '../components/NotionLogin';
+
 
 export default function Home() {
   return (
