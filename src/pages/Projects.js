@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-
-export default function Projects() {
+import React from "react";
+import LoginManager from "../components/ProjectUser";
+export default function Home() {
   return (
     <main>
       <h1>Grupp 5 tidsrapportering</h1>
-      <p>Projektöverblick</p>
+      <p>Startsida</p>
+      { <LoginManager/> }
+      
     </main>
   );
 }
