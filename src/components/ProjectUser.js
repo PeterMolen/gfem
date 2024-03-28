@@ -16,10 +16,9 @@ function VisaNotionDataID() {
         },
         body: JSON.stringify({
           databaseId: 'fd1181aaffe949c8805924b83b0604e6', // Replace with your actual database ID
-          creatorId: localStorage.getItem('PrivateId'), // Replace with the actual creator ID
+          creatorId: localStorage.getItem('PersonID'), // Replace with the actual creator ID
         }),
       };
- 
       try {
         const response = await fetch(url, requestData);
         if (!response.ok) {
@@ -27,7 +26,9 @@ function VisaNotionDataID() {
         }
         const data = await response.json();
         setData(data);
-     
+        
+
+        
       } catch (error) {
         setError(error.message);
       } finally {
@@ -62,47 +63,51 @@ function VisaNotionDataID() {
 };
  
  
-const handleTimespanChange = async (e, pageId) => {
-  e.preventDefault(); // Prevent default form submission
+// const handleTimespanChange = async (e, pageId) => {
+//   e.preventDefault(); // Prevent default form submission
  
-  // Extract new timespan values from the form
-  const start = e.target.start.value;
-  const end = e.target.end.value;
+//   // Extract new timespan values from the form
+//   const start = e.target.start.value;
+//   const end = e.target.end.value;
  
-  // Prepare the request data
-  const requestData = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      pageId,
-      start,
-      end,
-    }),
-  };
+//   // Prepare the request data
+//   const requestData = {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//       pageId,
+//       start,
+//       end,
+//     }),
+//   };
  
-  // Send the request to your server
-  try {
-    const response = await fetch('http://localhost:3001/changetime', requestData);
-    if (!response.ok) throw new Error(`Network response was not ok (${response.status})`);
+//   // Send the request to your server
+//   try {
+//     const response = await fetch('http://localhost:3001/changetime', requestData);
+//     if (!response.ok) throw new Error(`Network response was not ok (${response.status})`);
  
-    // Handle the response. For example, re-fetch the data to update the list.
-    alert('Time updated successfully!');
-  } catch (error) {
-    console.error('Failed to update timespan:', error.message);
-  }
-};
+//     // Handle the response. For example, re-fetch the data to update the list.
+//     alert('Time updated successfully!');
+//   } catch (error) {
+//     console.error('Failed to update timespan:', error.message);
+//   }
+// };
   return (
     <div>
-      <h1>Data Skapad av Mig</h1>
+      <h1>Mina projekt</h1>
       {data.length > 0 ? (
   <ul>
   {data.map((item) => (
     <li key={item.id}>
-      <strong>Projektnamn:</strong> {item.properties.Projectname.title[0].plain_text} <br />
-      <strong>Timmar:</strong> {item.properties.Hours.number} <br />
+      <strong>Projektnamn:</strong> {item.properties.Projectname.title[0].plain_text} <br />      
       <strong>Status:</strong> {item.properties.Status.select.name} <br />
-      <strong>Hours Left:</strong> {item.properties['Hours left'].formula.number} <br />
-      <form onSubmit={(e) => handleTimespanChange(e, item.id)}>
+      <strong>Timmar att lägga:</strong> {item.properties.Hours.number} <br />
+      <strong>Lagda timmar:</strong> {item.properties["Worked hours"].rollup.number} <br />
+      <strong>Återstående tid:</strong> {item.properties['Hours left'].formula.number} <br />
+      <strong>Startdatum:</strong> {item.properties.Timespan.date.start} <br />
+      <strong>Slutdatum:</strong> {item.properties.Timespan.date.end}<br /><br/>
+
+      {/* <form onSubmit={(e) => handleTimespanChange(e, item.id)}>
         <label>
           Timespan Start:
           <input type="date" name="start" required defaultValue={item.properties.Timespan.date.start} />
@@ -112,7 +117,7 @@ const handleTimespanChange = async (e, pageId) => {
           <input type="date" name="end" required defaultValue={item.properties.Timespan.date.end} />
         </label>
         <button type="submit">Update Time</button>
-      </form>
+      </form> */}
     </li>
   ))}
 </ul>

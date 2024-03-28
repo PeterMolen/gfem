@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 const Menu = () => {
   return (
     <div className="navbar">
@@ -28,6 +27,9 @@ const Menu = () => {
             </Link>
           </li>
         </ul>
+        <div className="loggedInUser">
+        <p>Inloggad som: </p>
+        </div>
       </div>
     </div>
   );

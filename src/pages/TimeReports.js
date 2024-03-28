@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Timerportss from '../components/TimeReport-1';
+import AddTimereport from '../components/TimeReport';
 export default function TimeReports() {
   return (
     <main>
-      <Timerportss/>
+      
       <h1>Grupp 5 tidsrapportering</h1>
       <p>tidsrapporteringssida</p>
+      <AddTimereport />
     </main>
   );
 }
