@@ -41,7 +41,7 @@ function VisaNotionDataID() {
 
   const handleStatusChange = (event) => {
     setSelectedStatus(event.target.value);
-    console.log("LOG: " + event.target.value)
+    console.log("Aktiv status: " + event.target.value)
   };
 
   if (isLoading) return <div>Laddar data...</div>;
