@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
- 
+
+
 function Login() {
   const [notionname, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // Initially, user is not known (null). We'll find out after checking localStorage.
   const [user, setUser] = useState(null);
- 
   useEffect(() => {
     // Attempt to retrieve user info from localStorage
     const userName = localStorage.getItem("UserName");
@@ -15,10 +15,9 @@ function Login() {
       setUser({ name: userName, id: userId });
     }
   }, []);
- 
+
   const handleLogin = async (e) => {
     e.preventDefault();
- 
     try {
       const response = await fetch("http://localhost:3001/login", {
         method: "POST",
@@ -32,6 +31,7 @@ function Login() {
         // Update localStorage and user state with new user info
         localStorage.setItem("UserName", data.user);
         localStorage.setItem("PrivateId", data.userid);
+        localStorage.setItem("PersonID", data.nameid)
         setUser({ name: data.user, id: data.userid });
       } else {
         alert("Login failed");
@@ -41,19 +41,23 @@ function Login() {
       alert("Network error or server cannot be reached");
     }
   };
+
   const handleLogout = () => {
     // Clear user info from localStorage
     localStorage.removeItem("UserName");
     localStorage.removeItem("PrivateId");
+    localStorage.removeItem("PersonID")
     // Reset user state to null
     setUser(null);
   };
+
+
   return (
     <div>
       {user ? (
         // Show user info if user state is set
         <div>
-          <h2>Welcome, {user.name}</h2>
+          <h2>Welcome, {user.name}</h2>          
           <p>Your User ID: {user.id}</p>
           <button onClick={handleLogout}>Logout</button> {/* Logout button */}
         </div>
@@ -78,5 +82,4 @@ function Login() {
     </div>
   );
 }
- 
 export default Login;
