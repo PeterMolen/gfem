@@ -1,5 +1,4 @@
 import React from "react";
-import ProjectUser from "../components/ProjectUser";
 import UserProjects from "../components/UserProjects"
 export default function Home() {
   return (
