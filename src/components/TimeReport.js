@@ -55,6 +55,8 @@ const AddTimereport = () => {
  
   // Renderar formuläret med inputfält och dropdown för att skapa en ny tidraport.
   return (
+    <div>
+    <h1>Rapportera in tid</h1>
     <div className="timereport-container">
     <form onSubmit={handleSubmit} className="timereport-box">
       <div>
@@ -83,6 +85,7 @@ const AddTimereport = () => {
       </div>
       <button type="submit">Lägg till Tidrapport</button>
     </form>
+    </div>
     </div>
   );
 };
