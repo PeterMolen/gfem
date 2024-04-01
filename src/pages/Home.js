@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <h1>Grupp 5</h1>
       <h2>Tidsrapporteringssystem</h2>
-      <img className="timereport-image" src={timereport} />
+      <img className="timereport-image" src={timereport} alt="Timereport" />
     </main>
   );
 }

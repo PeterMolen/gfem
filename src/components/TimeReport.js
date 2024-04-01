@@ -55,9 +55,10 @@ const AddTimereport = () => {
  
   // Renderar formuläret med inputfält och dropdown för att skapa en ny tidraport.
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="timereport-container">
+    <form onSubmit={handleSubmit} className="timereport-box">
       <div>
-        <label>Projekt</label>
+        <label>Projekt </label>
         <select value={selectedProject} onChange={e => setSelectedProject(e.target.value)}>
           <option value="">Välj ett projekt</option>
           {projects.map(project => (
@@ -69,19 +70,20 @@ const AddTimereport = () => {
         </select>
       </div>
       <div>
-        <label>Timmar</label>
+        <label>Timmar </label>
         <input type="number" value={hours} onChange={e => setHours(e.target.value)} />
       </div>
       <div>
-        <label>Datum</label>
+        <label>Datum </label>
         <input type="date" value={date} onChange={e => setDate(e.target.value)} />
       </div>
       <div>
-        <label>Anteckning</label>
+        <label>Anteckning </label>
         <textarea value={note} onChange={e => setNote(e.target.value)}></textarea>
       </div>
       <button type="submit">Lägg till Tidrapport</button>
     </form>
+    </div>
   );
 };
  
