@@ -1,53 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import NotionTableRow from '../components/projectFetch'; // glöm inte att sätta samma namn som patch och get filen
-import ProjectAdd from '../components/ProjectAdder'; // hämtar Post filen
-function App() {
-  const [data, setData] = useState([]);
+import React, {useEffect, useState} from "react";
+import EditProjects from "../components/EditProjects"
+
+
+const Overview = () => {
+  const [rollValue, setRollValue] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/notion')
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
-
-  const handleSave = (pageId, updatedProperties) => {
-    console.log('saving data ...')
-    fetch('http://localhost:3001/api/edit-notion-entry', {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-        
-      },
-      body: JSON.stringify({ pageId, updatedProperties })
-    })
-    .then(response => response.json())
-    .then(data => {
-      alert('saved successfully!');
-      console.log('Entry updated:', data);
-      
-    })
-    .catch(error => {
-      console.error('Error updating entry:', error);
-    });
-  };
+    const rollValueFromStorage = localStorage.getItem('Roll');
+    setRollValue(rollValueFromStorage);
   
+    const userName = localStorage.getItem('UserName');
+    const privateId = localStorage.getItem('PrivateId');
+    if (userName && privateId) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <div>
-      <ProjectAdd/>
-    <table>
-      <thead>
-      </thead>
-      <tbody>
-        {data.map(item => (
-          <NotionTableRow key={item.id} item={item} onSave={handleSave} />
-        ))}
-      </tbody>
-    </table>
+      {isLoggedIn ? (
+        rollValue === 'Chef' || rollValue === 'Produktägare' ? (
+          <EditProjects />
+        ) : (
+          <div>
+          <h2>Åtkomst nekad.</h2>
+          <h3>Endast chef och produktägare har tillgång till denna sida</h3>
+          </div>
+        )
+      ) : (
+        <h2>Vänligen logga in för att se denna sida</h2>
+      )}
     </div>
   );
-}
+};
 
-export default App;
-
+export default Overview;

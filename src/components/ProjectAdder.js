@@ -46,6 +46,7 @@ function ProjectAdd() {
       setNewHours(0);
       setNewTimespanStart('');
       setNewTimespanEnd('');
+      window.location.reload();
     })
     .catch(error => {
       alert('Error adding new project: ' + error.message);
@@ -68,9 +69,10 @@ function ProjectAdd() {
         placeholder="Status"
         value={newStatus}
         onChange={(e) => setNewStatus(e.target.value)}>
-          <option value="In progress">In progress</option>
-          <option value="Completed">Completed</option>
-          <option value="On hold">On hold</option>
+          <option>Välj status</option>
+          <option value="Next Up">Next Up</option>
+          <option value="Active">Active</option>
+          <option value="Done">Done</option>
         </select>
       <input
         type="number"

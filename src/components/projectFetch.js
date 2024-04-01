@@ -1,6 +1,7 @@
 
   // NotionTableRow.js
   import React, { useState } from 'react';
+  import "../App.css"
 
   const NotionTableRow = ({ item, onSave }) => {
     const [projectName, setProjectName] = useState(item.properties.Projectname.title[0]?.plain_text ?? '');
@@ -67,9 +68,9 @@
         <td><input value={projectName} onChange={(e) => setProjectName(e.target.value)} /></td>
         <td>
             <select value={status} onChange={(e) => setStatus(e.target.value)}>
-              <option value="In progress">In progress</option>
-              <option value="Completed">Completed</option>
-              <option value="On hold">On hold</option>
+              <option value="Done">Done</option>
+              <option value="Active">Active</option>
+              <option value="Next Up">Next Up</option>
           </select>
         </td>
         <td><input type="number" value={hours} onChange={(e) => setHours(e.target.value)} /></td>
