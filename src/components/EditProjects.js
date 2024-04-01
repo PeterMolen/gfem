@@ -44,6 +44,14 @@ function App() {
       <h2>Redigera projekt</h2>
       <div className="table-container">
     <table>
+    <tr>
+          <th>Projektnamn</th>
+          <th>Status</th>
+          <th>Totalt antal timmar</th>
+          <th>Arbetade timmar</th>
+          <th>Återstående timmar</th>
+          <th>Startdatum - Slutdatum</th>
+        </tr>
       <tbody>
         {data.map(item => (
           <NotionTableRow key={item.id} item={item} onSave={handleSave} />
