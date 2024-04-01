@@ -1,0 +1,15 @@
+
+.project-box {
+    display:inline-block;
+    flex-wrap: wrap;
+    max-width: 1400px;
+}
+
+.projects {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    text-align: left;
+    list-style: none;
+    width: 250px;
+}

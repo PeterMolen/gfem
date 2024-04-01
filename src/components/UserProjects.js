@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
- 
+import "./UserProject.css"
+
 function VisaNotionDataID() {
   // State to store fetched data
   const [data, setData] = useState([]);
@@ -63,17 +64,19 @@ function VisaNotionDataID() {
   <ul>
   {data.map((item) => {
   // Check if the selected status matches the item's status
-  if (selectedStatus === 'All' || item.properties.Status.select.name === selectedStatus) {
+  if (selectedStatus === "All" || item.properties.Status.select.name === selectedStatus) {
     return (
-      <li key={item.id}>
-        <strong>Projektnamn:</strong> {item.properties.Projectname.title[0].plain_text} <br />      
-        <strong>Status:</strong> {item.properties.Status.select.name} <br />
-        <strong>Timmar att lägga:</strong> {item.properties.Hours.number} <br />
-        <strong>Lagda timmar:</strong> {item.properties["Worked hours"].rollup.number} <br />
-        <strong>Återstående tid:</strong> {item.properties['Hours left'].formula.number} <br />
-        <strong>Startdatum:</strong> {item.properties.Timespan.date.start} <br />
-        <strong>Slutdatum:</strong> {item.properties.Timespan.date.end}<br /><br/>
-      </li>
+        <div className="project-box">
+            <li className="projects" key={item.id}>  
+                <strong>Projektnamn:</strong> {item.properties.Projectname.title[0].plain_text} <br />      
+                <strong>Status:</strong> {item.properties.Status.select.name} <br />
+                <strong>Timmar att lägga:</strong> {item.properties.Hours.number} timmar <br />
+               <strong>Lagda timmar:</strong> {item.properties["Worked hours"].rollup.number} timmar <br />
+               <strong>Återstående tid:</strong> {item.properties["Hours left"].formula.number} timmar <br />
+               <strong>Startdatum:</strong> {item.properties.Timespan.date.start} <br />
+               <strong>Slutdatum:</strong> {item.properties.Timespan.date.end}<br /><br/>
+            </li>
+      </div>
     );
   } else {
     // If the status doesn't match, return null to skip rendering

@@ -1,12 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import UserProjects from "../components/UserProjects"
-export default function Home() {
+
+const Projects = () => {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Kontrollera om användaren är inloggad
+    const userName = localStorage.getItem('UserName');
+    const privateId = localStorage.getItem('PrivateId');
+    if (userName && privateId) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
-    <main>
-      <h1>Grupp 5 tidsrapportering</h1>
-      <p>Startsida</p>
-      { <UserProjects /> }
-      
-    </main>
+    <div>
+      {isLoggedIn ? (
+        <UserProjects />
+      ) : (
+        <h2>Vänligen logga in för att se denna sida</h2>
+      )}
+    </div>
   );
-}
+};
+
+export default Projects;
