@@ -3,7 +3,9 @@ Länk till Monday: https://mohamedmohamud3222s-team.monday.com/boards/1409249142
 A Timereport application
 
 # Code Structure
-Componentes: 
+
+Componentes
+
 Menu.js: A component containing the navigation bar for the application. It links to various pages in the application, including NotionLogin.js.
 Footer.js: A component containing the footer for the application.
 NotionLogin.js: A component for logging into the website.
@@ -14,7 +16,8 @@ EditProjects.js: A component for editing a project, which utilizes projectFetch.
 TimeReport.js: A component for reporting time for a user.
 UserProject.js: A component for displaying which projects are available for the user.
 
-Pages: 
+Pages
+
 Home.js: A page displaying a background image.
 Overview.js: A page displaying an overview, where EditProjects.js is connected and has connections to ProjectAdder.js and projectFetch.js.
 Project.js: A page where UserProject.js is connected.
