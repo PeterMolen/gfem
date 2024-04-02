@@ -27,11 +27,11 @@ App.js: The main file that brings together all components and pages. Starts with
 
 # Installation
 you can clone this app from:
-https://github.com/oolsun/projektarbete-server
+https://github.com/oolsun/projektarbete
 to start application: npm start
 Opens [http://localhost:3000]
 ofcoures you need a server aswell you can also download that server at:
-https://github.com/oolsun/projektarbete
+https://github.com/oolsun/projektarbete-server
 to run the server open the terminal and type: node "servername".js
             
 
